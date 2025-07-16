@@ -1,5 +1,6 @@
 import express from 'express';
-import {  } from '../controllers/authController.js';
+import { checkEmail } from '../controllers/authController.js';
+import { validateCheckEmail } from '../middleware/validation.js';
 
 const router = express.Router();
 
