@@ -2,8 +2,12 @@ import express from 'express';
 const app = express();
 
 
-app.use('/home', async(req, res)=>{
-    res.send("Home Page")
+app.use('/home', async (req, res) => {
+    res.json({
+        status: 'success',
+        message: 'Welcome to the Home Page',
+        timestamp: new Date().toISOString()
+    });
 })
 
 // Handle undefined routes (404 Not Found)
