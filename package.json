@@ -1,0 +1,22 @@
+{
+  "name": "school_app_nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regendraSuman2017/school_app_nodeJs.git"
+  },
+  "author": "Regendra Suman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/regendraSuman2017/school_app_nodeJs/issues"
+  },
+  "homepage": "https://github.com/regendraSuman2017/school_app_nodeJs#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
