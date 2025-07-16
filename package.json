@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "school_app_nodejs",
   "version": "1.0.0",
   "main": "index.js",
