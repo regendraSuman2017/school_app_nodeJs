@@ -1,6 +1,11 @@
 import express from 'express';
 const app = express();
 
+
+app.use('/home', async(req, res)=>{
+    res.send("Home Page")
+})
+
 // Handle undefined routes (404 Not Found)
 // Start the server
 const startServer = async () => {
