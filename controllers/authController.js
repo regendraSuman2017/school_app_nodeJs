@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
 
 // Register new user
 export const register = async (req, res) => {
@@ -57,42 +56,9 @@ export const register = async (req, res) => {
 // Login user
 export const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
-
-        // Find user
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(401).json({
-                status: 'error',
-                message: 'Invalid credentials'
-            });
-        }
-
-        // Check password
-        const isValidPassword = await bcrypt.compare(password, user.password);
-        if (!isValidPassword) {
-            return res.status(401).json({
-                status: 'error',
-                message: 'Invalid credentials'
-            });
-        }
-
-        // Create JWT token
-        const token = jwt.sign(
-            { userId: user._id },
-            process.env.JWT_SECRET || 'your-secret-key',
-            { expiresIn: '24h' }
-        );
-
-        res.status(200).json({
-            status: 'success',
-            message: 'Login successful',
-            token,
-            user: {
-                id: user._id,
-                username: user.username,
-                email: user.email
-            }
+        return res.status(200).json({
+            status: 'successr',
+            message: 'Invalid dkjhcredentials'
         });
     } catch (error) {
         res.status(500).json({
