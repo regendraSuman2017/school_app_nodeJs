@@ -1,19 +1,24 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
 
 export const checkEmail = async (req, res) => {
     try {
-             return res.status(200).json({
+        const { email } = req.body;
+        
+        if (!email) {
+            return res.status(400).json({
+                success: false,
+                message: 'Email is required'
+            });
+        }
+
+        return res.status(200).json({
             success: true,
-            message: 'Succes',
-            error: error.message
+            message: 'Email is available'
         });
     } catch (error) {
-        console.error('Error checking email:', error);
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: 'Server error',
             error: error.message
         });
     }
