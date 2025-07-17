@@ -6,7 +6,7 @@ export const checkEmail = async (req, res) => {
     try {
         const { emailId } = req.body;
 
-        const existingUser = await db.query('SELECT * FROM auth_master WHERE emailId = ?', [emailId]);
+        const existingUser = await db.query('SELECT * FROM auth_master');
 
         if (existingUser.length > 0) {
             return res.status(200).json({
