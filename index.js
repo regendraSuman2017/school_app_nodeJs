@@ -9,13 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Routes
-app.use('/api/auth', async (req, res) => {
-    res.json({
-        status: 'success',
-        message: 'Welcome to the API Page',
-        timestamp: new Date().toISOString()
-    });
-})
+app.use('/api/auth', authRoutes);
 
 app.use('/home', async (req, res) => {
     res.json({
