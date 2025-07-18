@@ -18,4 +18,21 @@ const config = {
     env: process.env.NODE_ENV || 'development'
 };
 
+// Validate required configuration
+const validateConfig = () => {
+    const requiredEnvVars = {
+        'JWT_SECRET': config.jwt.secret,
+        'DB_NAME': config.database.name,
+        'DB_USER': config.database.user,
+        'DB_HOST': config.database.host
+    };
+
+    for (const [name, value] of Object.entries(requiredEnvVars)) {
+        if (!value) {
+            throw new Error(`${name} is required in environment variables`);
+        }
+    }
+};
+
+validateConfig();
 export default config;
