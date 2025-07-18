@@ -1,29 +1,32 @@
 import db from '../config/db.js';
 
 export const checkEmail = async (req, res) => {
-    try {
-const { email_id } = req.body; // Make sure you get `name` from the request
+  try {
+    const { emailId } = req.body;
 
-const [rows] = await db.execute('SELECT * FROM auth_master WHERE email_id = ?', [email_id]);
-        
-         if (rows.length > 0) {
-    return res.status(200).json({
+    const existingUser = await db.query('SELECT * FROM auth_master WHERE email_id = ?', [emailId]);
+
+    if (existingUser.length > 0) {
+      return res.status(200).json({
+        success: true,
+        message: "Email exists",
+        data: {
+          emailId,
+          password: existingUser[0].password
+        }
+      });
+    }
+
+    return res.status(400).json({
       success: false,
-      message: 'Email already exists',
+      message: "Email does not exist"
     });
-  } else {
-    return res.status(200).json({
-      success: true,
-      message: 'Email not available',
+  } catch (error) {
+    console.error('Error checking email:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+      error: error.message
     });
   }
-
-
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: 'Server error',
-            error: error.message
-        });
-    }
 };
