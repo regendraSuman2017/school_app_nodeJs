@@ -1,17 +1,29 @@
-import mysql from 'mysql2';
-import config from './config.js';
+import dotenv from 'dotenv';
+dotenv.config();
+import mysql from 'mysql2/promise';
 
 const pool = mysql.createPool({
-    host: config.database.host,
-    user: config.database.user,
-    password: config.database.password,
-    database: config.database.name,
-    waitForConnections: true,
-    connectionLimit: config.database.connectionLimit || 10,
-    queueLimit: 0
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  port: process.env.MYSQL_PORT,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-// Convert pool to use promises
-const promisePool = pool.promise();
+// Export the pool as default
+export default pool;
 
-export default promisePool;
+// Export the test function
+export const testConnection = async () => {
+  try {
+    const [rows] = await db.query('SELECT NOW() AS now');
+    console.log('✅ Connected to Railway MySQL! Time:', rows[0].now);
+  } catch (err) {
+    console.error('❌ Connection failed:', err.message);
+  }
+}
+
+testConnection();
