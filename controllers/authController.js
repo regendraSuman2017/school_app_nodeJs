@@ -2,7 +2,7 @@ import db from '../config/db.js';
 
 export const checkEmail = async (req, res) => {
     try {
-        const { email } = req.body;
+        const { email_id } = req.body;
 
         
         if (!email) {
