@@ -5,6 +5,6 @@ const router = express.Router();
 
 // Authentication routes
 router.post('/checkEmail', checkEmail);
-router.post('/signUp', validateSignUp, signupData);
+router.post('/signUp', signupData);
 
 export default router;
