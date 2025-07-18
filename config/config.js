@@ -8,7 +8,7 @@ const config = {
         user: process.env.MYSQL_USER || 'root',
         password: process.env.MYSQL_PASSWORD || '',
         name: process.env.MYSQL_DATABASE || 'railway',
-        port: process.env.MYSQL_PORT || 3307,
+        port: process.env.MYSQL_PORT || 3308,
         connectionLimit: 10
     },
     jwt: {
