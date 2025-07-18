@@ -11,20 +11,23 @@ export const checkEmail = async (req, res) => {
             });
         }
 
-        const existingUser = await db.query('SELECT * FROM auth_master WHERE emailId = ?', [email]);
+        const existingUser = await db.query('INSERT INTO auth_master (emailId) VALUES (?)', [email]);
         
-        if (existingUser.length > 0) {
+        if (existingUser) {
             return res.status(200).json({
                 success: true,
                 message: 'Email ID is available'
             });
+        }else{
+          
+                return res.status(400).json({
+                    success: false,
+                    message: 'Email ID is not available'
+                });
+            
         }
 
 
-        return res.status(200).json({
-            success: true,
-            message: 'Email is available'
-        });
     } catch (error) {
         return res.status(500).json({
             success: false,
