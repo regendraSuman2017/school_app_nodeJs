@@ -13,13 +13,12 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// Export the pool as default
 export default pool;
 
-// Export the test function
 export const testConnection = async () => {
   try {
     const [rows] = await pool.query('SELECT NOW() AS now');
+    console.log('Connected to Railway MySQL! Time:', rows[0].now);
     console.log('✅ Connected to Railway MySQL! Time:', rows[0].now);
   } catch (err) {
     console.error('❌ Connection failed:', err.message);
