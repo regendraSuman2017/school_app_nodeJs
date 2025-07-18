@@ -2,6 +2,7 @@ import express from 'express';
 import authRoutes from './routes/authRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';
 import courseRoutes from './routes/courseRoutes.js';
+import classRoutes from './routes/classRoutes.js';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/session', sessionRoutes);
 app.use('/api/course', courseRoutes);
+app.use('/api/class', classRoutes);
 
 app.use('/home', async (req, res) => {
     res.json({
