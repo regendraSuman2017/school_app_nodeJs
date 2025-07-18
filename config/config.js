@@ -4,11 +4,11 @@ dotenv.config();
 const config = {
     port: process.env.PORT || 3000,
     database: {
-        host: process.env.DB_HOST || 'localhost',
-        user: process.env.DB_USER || 'root',
-        password: process.env.DB_PASSWORD || '',
-        name: process.env.DB_NAME || 'railway',
-        port: process.env.DB_PORT || 3307,
+        host: process.env.MYSQL_HOST || 'localhost',
+        user: process.env.MYSQL_USER || 'root',
+        password: process.env.MYSQL_PASSWORD || '',
+        name: process.env.MYSQL_DATABASE || 'railway',
+        port: process.env.MYSQL_PORT || 3307,
         connectionLimit: 10
     },
     jwt: {
