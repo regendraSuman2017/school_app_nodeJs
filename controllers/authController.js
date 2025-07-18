@@ -12,7 +12,7 @@ export const checkEmail = async (req, res) => {
             });
         }
 
-        const [result] = await db.execute('INSERT INTO auth_master (emailId) VALUES (?)', [email]);
+        const [result] = await db.execute('INSERT INTO auth_master (email_id) VALUES (?)', [email]);
         
         if (result) {
             return res.status(200).json({
