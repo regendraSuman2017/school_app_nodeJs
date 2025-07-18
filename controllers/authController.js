@@ -5,8 +5,6 @@ export const checkEmail = async (req, res) => {
 const { name } = req.body; // Make sure you get `name` from the request
 
 const [result] = await db.execute('INSERT INTO category (name) VALUES (?)', [name]);
-
-       const [result] = await db.execute('INSERT INTO category (name) VALUES (?)', [name]);
         
         if (result) {
             return res.status(200).json({
