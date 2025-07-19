@@ -59,7 +59,7 @@ export const getDepartment = async (req, res) => {
         }
 
 
-        const [departments] = await db.query('SELECT * FROM department_master WHERE organization_id = ?', [organization_id]);
+        const [departments] = await db.query('SELECT * FROM school_department WHERE organization_id = ?', [organization_id]);
 
         if (departments.length === 0) {
             return res.status(200).json({
