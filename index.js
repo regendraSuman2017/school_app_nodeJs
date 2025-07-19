@@ -7,7 +7,8 @@ import subjectsRoutes from './routes/subjectsRoutes.js';
 import passwordRoutes from './routes/passwordRoutes.js';
 import departmentsRoutes from './routes/departmentRoutes.js';
 import designationsRoutes from './routes/designationRoutes.js';
-import shiftRoutes from './routes/shiftRoutes.js'; 
+import shiftRoutes from './routes/shiftRoutes.js';
+import staffRoutes from './routes/staffRoutes.js';
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/api/password', passwordRoutes);
 app.use('/api/departments', departmentsRoutes);
 app.use('/api/designations', designationsRoutes);
 app.use('/api/shifts', shiftRoutes);
+app.use('/api/staff', staffRoutes);
 
 
 app.use('/home', async (req, res) => {
