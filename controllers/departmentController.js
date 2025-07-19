@@ -11,18 +11,7 @@ export const insertDepartment = async (req, res) => {
             });
         }
 
-        const department = {
-            department_name,
-            organization_id,
-            status: 1,
-            created_at: new Date(),
-            updated_at: new Date()
-        };
 
-        const existingDepartment = await db.collection('departments').findOne({
-            department_name,
-            organization_id
-        });
 
         if (existingDepartment) {
             return res.status(400).json({
@@ -69,12 +58,21 @@ export const getDepartment = async (req, res) => {
             });
         }
 
-        const departments = await db.collection('departments').find({
-            organization_id
-        }).toArray();
+
+        const [departments] = await db.query('SELECT * FROM department_master WHERE organization_id = ?', [organization_id]);
+
+        if (departments.length === 0) {
+            return res.status(200).json({
+                success: true,
+                statusCode: 200,
+                message: 'No Departments found for the given organization',
+                data: departments
+            });
+        }
 
         return res.status(200).json({
             success: true,
+            statusCode: 200,
             message: 'Departments fetched successfully',
             data: departments
         });
@@ -87,4 +85,3 @@ export const getDepartment = async (req, res) => {
         });
     }
 };
-
