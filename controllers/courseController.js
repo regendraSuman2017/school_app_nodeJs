@@ -1,5 +1,6 @@
 import db from '../config/db.js';
 
+
 export const insertCourse = async (req, res) => {
   try {
 
