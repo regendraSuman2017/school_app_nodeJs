@@ -46,7 +46,7 @@ export const insertSubjects = async (req, res) => {
         }
 
         const [result] = await db.query(
-            'INSERT INTO subjects (subject_name, class_id, course_id, organization_id, status, created_date, updated_date) VALUES (?, ?, ?, ?, 1, NOW(), NOW())',
+            'INSERT INTO subjects (subject_name, subject_code, class_id, course_id, organization_id, status, created_date, updated_date) VALUES (?, ?, ?, ?, ?, 1, NOW(), NOW())',
             [subject_name, class_id, course_id, organization_id]
         );
 
