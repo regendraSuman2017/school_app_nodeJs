@@ -3,6 +3,7 @@ import authRoutes from './routes/authRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';
 import courseRoutes from './routes/courseRoutes.js';
 import classRoutes from './routes/classRoutes.js';
+import subjectsRoutes from './routes/subjectsRoutes.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/session', sessionRoutes);
 app.use('/api/course', courseRoutes);
 app.use('/api/class', classRoutes);
+app.use('/api/subjects', subjectsRoutes);
 
 app.use('/home', async (req, res) => {
     res.json({
